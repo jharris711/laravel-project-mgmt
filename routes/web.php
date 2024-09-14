@@ -9,6 +9,10 @@ use Inertia\Inertia;
 
 Route::redirect('/', '/dashboard');
 
+/**
+ * Accessing the dashboard is only allowed when user is 
+ * authenticated and email is verified.
+ */
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get(
         '/dashboard',
@@ -20,7 +24,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('user', UserController::class);
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
