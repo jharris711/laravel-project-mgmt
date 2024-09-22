@@ -58,9 +58,9 @@ export default function TasksTable({
               >
                 ID
               </TableHeading>
-              <TableHeading name="image">Image</TableHeading>
+              <th className="px-3 py-3">Image</th>
               {!hideProjectColumn && (
-                <TableHeading name="image">Project Name</TableHeading>
+                <th className="px-3 py-3">Project Name</th>
               )}
               <TableHeading
                 name="name"
